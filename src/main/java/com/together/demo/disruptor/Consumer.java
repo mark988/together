@@ -2,7 +2,6 @@ package com.together.demo.disruptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lmax.disruptor.EventHandler;
-import com.together.demo.dao.DynamicDao;
 import com.together.demo.pojo.entity.Order;
 import com.together.demo.pojo.vo.Information;
 import com.together.demo.pojo.vo.OrderEvent;

@@ -30,3 +30,10 @@ spring:
     expose-spring-macro-helpers: true
   main:
     lazy-initialization: false
+
+management:
+  info: # 打开info actuator/info请求访问权限
+  defaults:
+  enabled: true
+  git: # https://github.com/git-commit-id/maven-git-commit-id-plugin
+  mode: full
