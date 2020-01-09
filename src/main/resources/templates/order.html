@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title> 下单界面 </title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    /**
+     * controller 获取到的对象值
+     * @type {Array[]}
+     */
+    var userId =[[${userId}]] ;
+
+    var socket;
+    function openSocket() {
+        if(typeof(WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        }else{
+            //console.log("您的浏览器支持WebSocket");
+            var socketUrl="http://localhost:8080/websocket/"+userId;
+            socketUrl=socketUrl.replace("https","ws").replace("http","ws");
+            if(socket!=null){
+                socket.close();
+                socket=null;
+            }
+            socket = new WebSocket(socketUrl);
+            //打开事件
+            socket.onopen = function() {
+                console.log("websocket已打开");
+            };
+            //获得消息事件
+            socket.onmessage = function(e) {
+
+                var jsObject = JSON.parse(e.data);
+                console.log(jsObject.text);
+                if(jsObject.type=="1"){
+                    alert(jsObject.text)
+                }
+                //发现消息进入    开始处理前端触发逻辑
+            };
+            //关闭事件
+            socket.onclose = function() {
+                console.log("websocket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function() {
+                console.log("websocket发生了错误");
+            }
+        }
+    }
+    function sendMessage() {
+        if(typeof(WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        }else {
+            //console.log("您的浏览器支持WebSocket");
+            //console.log('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');
+            socket.send('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');
+        }
+    }
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    }
+</script>
+<script>
+        (function() {
+            /**
+             * 打开页面链接socket 通讯
+             */
+            openSocket();
+
+        })();
+</script>
+    <body>
+       <p th:text="'Hello, ' + ${userId} + '!'"> </p>
+        <div>
+            <table>
+                <thead></thead>
+                <tbody>
+                    陕西苹果1箱
+                </tbody>
+            </table>
+            <p><button name="下单" id="createOrderButton" > 下单 </button></p>
+        </div>
+
+        <!--<p>【操作】：<div><a onclick="sendMessage()">发送消息</a></div>-->
+    </body>
+<script>
+    $("#createOrderButton").click(function(event){
+        //alert("a aaa");
+        $.ajax({
+            type: "get",
+            url: "http://localhost:8080/disruptor/order/23/"+userId,
+           // data: {},
+            //  dataType: "json",
+            success: function(result){
+                //alert(result);
+            }
+        });
+    });
+</script>
+</html>
