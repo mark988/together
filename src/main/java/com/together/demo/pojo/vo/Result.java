@@ -1,61 +1,103 @@
 package com.together.demo.pojo.vo;
 
-import com.together.demo.utils.TogetherConstants;
-import java.io.Serializable;
-import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+import com.together.demo.exception.InfoInterface;
+import com.together.demo.utils.CommonEnum;
+import lombok.Data;
 
 /**
- * @author maxiaoguang
+ * 结果统一返回对象
+ * @param <T>
  */
-public class Result extends HashMap<String, Object> implements Serializable {
+@Data
+public class Result<T> {
+    /**
+     * 响应代码
+     */
+    private Integer code;
 
-	public Result() {
-		put("code", 0);
-	}
+    /**
+     * 响应消息
+     */
+    private String desc;
 
-	public static Result error() {
-		return error(-1, "未知异常");
-	}
+    /**
+     * 响应结果
+     */
+    private T  result;
 
-	public static Result error(String msg) {
-		return error(-1, msg);
-	}
+    public Result() {
+    }
 
-	public static Result error(int code, String msg) {
-		Result r = new Result();
-		r.put("code", code);
-		r.put("msg", msg);
-		return r;
-	}
-	public static Result error(Object data) {
-		Result r = new Result();
-		r.put("msg", TogetherConstants.OPERATION_FAIL);
-		r.put("data",data);
-		return r;
-	}
-	public static Result ok(Object data) {
-		Result r = new Result();
-		r.put("msg", TogetherConstants.OPERATION_SUCCESS);
-		r.put("data",data);
-		return r;
-	}
+    public Result(InfoInterface errorInfo) {
+        this.code = errorInfo.getCode();
+        this.desc = errorInfo.getDesc();
+    }
 
-	public static Result ok(String msg,  Object data) {
-		Result r = new Result();
-		r.put("msg", msg);
-		r.put("data",data);
-		return r;
-	}
 
-	public static Result ok() {
-		Result r = new Result();
-		r.put("msg", TogetherConstants.OPERATION_SUCCESS);
-		return r;
-	}
+    public T getResult() {
+        return result;
+    }
 
-	@Override
-	public Result put(String key, Object value) {
-		super.put(key, value);
-		return this;
-	}
+    public void setResult(T result) {
+        this.result = result;
+    }
+
+    /**
+     * 成功
+     *
+     * @return
+     */
+    public static Result success() {
+        return success(null);
+    }
+
+    /**
+     * 成功
+     * @param data
+     * @return
+     */
+    public static Result success(Object data) {
+        Result rb = new Result();
+        rb.setCode(CommonEnum.SUCCESS.getCode());
+        rb.setDesc(CommonEnum.SUCCESS.getDesc());
+        rb.setResult(data);
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static Result error(InfoInterface errorInfo) {
+        Result rb = new Result();
+        rb.setCode(errorInfo.getCode());
+        rb.setDesc(errorInfo.getDesc());
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static Result error(Integer code, String desc) {
+        Result rb = new Result();
+        rb.setCode(code);
+        rb.setDesc(desc);
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static Result error(String desc) {
+        Result rb = new Result();
+        rb.setCode(CommonEnum.FAIL.getCode());
+        rb.setDesc(desc);
+        return rb;
+    }
+
+    @Override
+    public String toString() {
+        return JSONObject.toJSONString(this);
+    }
+
 }

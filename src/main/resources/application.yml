@@ -6,7 +6,7 @@ spring:
     password: root
   jpa:
     database: MYSQL
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5Dialect
@@ -16,6 +16,11 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .html
+## spring boot默认不会抛出404异常（NoHandlerFoundException),所以在ControllerAdvice中捕获不到该异常,导致404总是跳过ContollerAdvice,直接显示ErrorController的错误页。需要改变配置，让404错误抛出异常（NoHandlerFoundException），这样便可在ControllerAdvice中捕获此异常
+#    throw-exception-if-no-handler-found: true
+#  resources:
+#    add-mappings: false
+## 结束 ##
   freemarker:
     request-context-attribute: request
     suffix: .html

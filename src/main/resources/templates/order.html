@@ -17,7 +17,6 @@
         if(typeof(WebSocket) == "undefined") {
             console.log("您的浏览器不支持WebSocket");
         }else{
-            //console.log("您的浏览器支持WebSocket");
             var socketUrl="http://localhost:8080/websocket/"+userId;
             socketUrl=socketUrl.replace("https","ws").replace("http","ws");
             if(socket!=null){
@@ -31,13 +30,11 @@
             };
             //获得消息事件
             socket.onmessage = function(e) {
-
                 var jsObject = JSON.parse(e.data);
-                console.log(jsObject.text);
-                if(jsObject.type=="1"){
+                console.log(jsObject)
+                if(jsObject.business.messageType=="52"){
                     alert(jsObject.text)
                 }
-                //发现消息进入    开始处理前端触发逻辑
             };
             //关闭事件
             socket.onclose = function() {
@@ -53,17 +50,10 @@
         if(typeof(WebSocket) == "undefined") {
             console.log("您的浏览器不支持WebSocket");
         }else {
-            //console.log("您的浏览器支持WebSocket");
-            //console.log('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');
-            socket.send('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');
+           socket.send('{"toUserId":"'+$("#toUserId").val()+'","contentText":"'+$("#contentText").val()+'"}');
         }
     }
 
-    function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return decodeURI(r[2]); return null;
-    }
 </script>
 <script>
         (function() {
@@ -93,11 +83,9 @@
         //alert("a aaa");
         $.ajax({
             type: "get",
-            url: "http://localhost:8080/disruptor/order/23/"+userId,
-           // data: {},
-            //  dataType: "json",
+            url: "http://localhost:8080/disruptor/order/1/"+userId,
             success: function(result){
-                //alert(result);
+                console.log(result)
             }
         });
     });

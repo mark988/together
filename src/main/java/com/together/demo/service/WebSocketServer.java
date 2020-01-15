@@ -1,7 +1,9 @@
 package com.together.demo.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.together.demo.pojo.vo.Business;
 import com.together.demo.pojo.vo.Information;
+import com.together.demo.utils.CommonEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -47,7 +49,7 @@ public class WebSocketServer {
         this.userId=userId;
         try {
             Information o = new Information();
-            o.setType(0);
+            o.setBusiness(new Business(CommonEnum.BUSINESS_SHOP,CommonEnum.MESSAGE_TYPE_TIPS.getCode()));
             o.setText("连接成功");
             sendMessage(JSONObject.toJSONString(o));
         } catch (IOException e) {

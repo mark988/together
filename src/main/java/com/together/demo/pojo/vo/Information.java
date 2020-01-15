@@ -9,6 +9,6 @@ import java.io.Serializable;
  */
 @Data
 public class Information implements Serializable {
-    private Integer type;
+    private Business business;
     private String  text;
 }

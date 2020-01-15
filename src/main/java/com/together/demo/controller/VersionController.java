@@ -16,6 +16,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+/**
+ *  版本查询
+ */
+
 @Slf4j
 @RestController
 public class VersionController {
