@@ -11,7 +11,7 @@ import com.together.demo.service.OrderService;
 import com.together.demo.service.ProductService;
 import com.together.demo.service.WebSocketServer;
 import com.together.demo.config.ApplicationContextHelper;
-import com.together.demo.utils.CommonEnum;
+import com.together.demo.pojo.enums.CommonEnum;
 import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.atomic.AtomicInteger;
 

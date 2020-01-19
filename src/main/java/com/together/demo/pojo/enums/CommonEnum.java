@@ -1,4 +1,4 @@
-package com.together.demo.utils;
+package com.together.demo.pojo.enums;
 
 import com.together.demo.exception.InfoInterface;
 /**

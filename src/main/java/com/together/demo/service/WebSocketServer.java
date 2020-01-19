@@ -3,7 +3,7 @@ package com.together.demo.service;
 import com.alibaba.fastjson.JSONObject;
 import com.together.demo.pojo.vo.Business;
 import com.together.demo.pojo.vo.Information;
-import com.together.demo.utils.CommonEnum;
+import com.together.demo.pojo.enums.CommonEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,7 @@
 package com.together.demo.controller;
 
+import com.together.demo.designPattern.strategy.TaxProcess;
+import com.together.demo.designPattern.strategy.TaxProcessContext;
 import com.together.demo.exception.GlobalException;
 import com.together.demo.pojo.vo.Result;
 import com.together.demo.service.AccessLimitService;
@@ -67,5 +69,20 @@ public class TestController {
             log.info("请求速度太快了...");
             return "请求速度太快了...";
         }
+    }
+
+    @Autowired
+    private TaxProcessContext innerCommandContext;
+
+    /**
+     * ce测试策略模式
+     * @param country
+     * @return
+     */
+    @RequestMapping(value = "/v6/{country}",method = RequestMethod.GET)
+    public String test1(@PathVariable String country){
+        TaxProcess instance = innerCommandContext.getInstance(country);
+        instance.process(country);
+        return "OK";
     }
 }

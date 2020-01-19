@@ -1,7 +1,7 @@
 package com.together.demo.exception;
 
 import com.together.demo.pojo.vo.Result;
-import com.together.demo.utils.CommonEnum;
+import com.together.demo.pojo.enums.CommonEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

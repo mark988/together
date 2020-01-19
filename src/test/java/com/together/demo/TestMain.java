@@ -9,8 +9,6 @@ import com.kennycason.kumo.font.scale.SqrtFontScalar;
 import com.kennycason.kumo.nlp.FrequencyAnalyzer;
 import com.kennycason.kumo.nlp.tokenizers.ChineseWordTokenizer;
 import com.kennycason.kumo.palette.LinearGradientColorPalette;
-import org.dom4j.DocumentException;
-
 import java.awt.*;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -18,6 +16,7 @@ import java.io.OutputStream;
 public class TestMain {
 
     public static void main(String[] args) throws IOException {
+
         //创建一个词语解析器,类似于分词
         FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
         frequencyAnalyzer.setWordFrequenciesToReturn(600);
@@ -61,5 +60,6 @@ public class TestMain {
             }
         };
         wordCloud.writeToStreamAsPNG(outputStream);*/
+
     }
 }

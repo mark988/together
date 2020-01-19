@@ -4,6 +4,8 @@ public interface InfoInterface {
 
     Integer getCode();
 
-    /** 描述*/
+    /**
+     * 描述
+     * */
     String getDesc();
 }

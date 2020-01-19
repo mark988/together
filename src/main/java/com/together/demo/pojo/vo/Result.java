@@ -2,7 +2,7 @@ package com.together.demo.pojo.vo;
 
 import com.alibaba.fastjson.JSONObject;
 import com.together.demo.exception.InfoInterface;
-import com.together.demo.utils.CommonEnum;
+import com.together.demo.pojo.enums.CommonEnum;
 import lombok.Data;
 
 /**
