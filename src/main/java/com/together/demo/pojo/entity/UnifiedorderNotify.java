@@ -1,5 +1,6 @@
 package com.together.demo.pojo.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
  * 支付结束后回调结果表
  * @author mark
  */
+@Builder
 @Data
 public class UnifiedorderNotify {
     private Integer  id;

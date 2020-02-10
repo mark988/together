@@ -84,8 +84,25 @@ public class PayController {
             log.info(" sign:{}",sign);
             // if (PayUtil.verify(prestr, sign, WechatConfig.KEY, "utf-8")) {
             /**注意要判断微信支付重复回调，支付成功后微信会重复的进行回调**/
-            UnifiedorderNotify o = new UnifiedorderNotify();
-            o.setAppid((String) map.get("appid"));
+            UnifiedorderNotify o = UnifiedorderNotify.builder()
+                                       .appid((String) map.get("appid"))
+                                       .attach((String) map.get("attach"))
+                                       .bankType((String) map.get("bank_type"))
+                                       .totalFee((String)map.get("total_fee"))
+                                       .couponCount((String) map.get("coupon_count"))
+                                        .couponFee((String) map.get("coupon_fee"))
+                                        .couponId((String) map.get("coupon_id"))
+                                        .couponType((String) map.get("coupon_type"))
+                                        .feeType((String) map.get("fee_type"))
+                                        .isSubscribe((String) map.get("is_subscribe"))
+                                        .mchId((String) map.get("mch_id"))
+                                        .nonceStr((String) map.get("nonce_str"))
+                                        .resultCode((String) map.get("result_code"))
+                                        .returnCode((String) map.get("return_code"))
+                                        .timeEnd((String) map.get("time_end"))
+                                        .tradeType((String) map.get("trade_type"))
+                                       .build();
+            /*o.setAppid((String) map.get("appid"));
             o.setAttach((String) map.get("attach"));
             o.setBankType((String) map.get("bank_type"));
             o.setTotalFee((String)map.get("total_fee"));
@@ -102,7 +119,7 @@ public class PayController {
             o.setResultCode((String) map.get("result_code"));
             o.setReturnCode((String) map.get("return_code"));
             o.setTimeEnd((String) map.get("time_end"));
-            o.setTradeType((String) map.get("trade_type"));
+            o.setTradeType((String) map.get("trade_type"));*/
             //回调结果保存
             //unifiedorderNotifyService.addUnifiedorderNotify(o);
             /**
