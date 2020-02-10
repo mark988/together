@@ -42,3 +42,6 @@ management:
   enabled: true
   git: # https://github.com/git-commit-id/maven-git-commit-id-plugin
   mode: full
+
+#配置ngnix映射地址
+ngnixUrl: https://www.i-linli.com/nelb/
