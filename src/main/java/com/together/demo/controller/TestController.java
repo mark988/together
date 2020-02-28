@@ -1,5 +1,6 @@
 package com.together.demo.controller;
 
+import com.together.demo.annotation.EagleEye;
 import com.together.demo.designPattern.strategy.TaxProcess;
 import com.together.demo.designPattern.strategy.TaxProcessContext;
 import com.together.demo.exception.GlobalException;
@@ -83,6 +84,14 @@ public class TestController {
     public String test1(@PathVariable String country){
         TaxProcess instance = innerCommandContext.getInstance(country);
         instance.process(country);
+        return "OK";
+    }
+
+
+    @EagleEye(desc = "v7 controller")
+    @RequestMapping(value = "/v7",method = RequestMethod.GET)
+    public String test2(){
+
         return "OK";
     }
 }
