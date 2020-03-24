@@ -1,4 +1,4 @@
-package com.together.demo.service;
+package com.together.demo.service.framework;
 
 import com.google.common.util.concurrent.RateLimiter;
 import org.springframework.stereotype.Service;

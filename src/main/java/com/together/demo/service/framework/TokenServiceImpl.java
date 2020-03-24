@@ -1,4 +1,4 @@
-package com.together.demo.service;
+package com.together.demo.service.framework;
 
 import com.together.demo.exception.GlobalException;
 import com.together.demo.pojo.enums.CommonEnum;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class TokenServiceImpl implements TokenService {
 
     @Autowired
-    private  RedisService redisService;
+    private RedisService redisService;
 
     @Override
     public String createToken() {

@@ -9,7 +9,7 @@ import com.together.demo.pojo.vo.Information;
 import com.together.demo.pojo.vo.OrderEvent;
 import com.together.demo.service.OrderService;
 import com.together.demo.service.ProductService;
-import com.together.demo.service.WebSocketServer;
+import com.together.demo.service.framework.WebSocketServer;
 import com.together.demo.config.ApplicationContextHelper;
 import com.together.demo.pojo.enums.CommonEnum;
 import lombok.extern.slf4j.Slf4j;

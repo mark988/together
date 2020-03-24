@@ -1,4 +1,4 @@
-package com.together.demo.service;
+package com.together.demo.service.framework;
 
 import com.alibaba.fastjson.JSONObject;
 import com.together.demo.pojo.vo.Business;

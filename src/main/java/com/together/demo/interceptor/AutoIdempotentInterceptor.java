@@ -3,7 +3,7 @@ package com.together.demo.interceptor;
 import com.alibaba.fastjson.JSONObject;
 import com.together.demo.annotation.AutoIdempotent;
 import com.together.demo.pojo.vo.Result;
-import com.together.demo.service.TokenService;
+import com.together.demo.service.framework.TokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
