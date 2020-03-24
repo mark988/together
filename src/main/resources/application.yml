@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.103.2.87:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://www.mayuyao.com:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     username: root
-    password: root
+    password: mark8355141
   jpa:
     database: MYSQL
     show-sql: true
@@ -35,6 +35,18 @@ spring:
     expose-spring-macro-helpers: true
   main:
     lazy-initialization: false
+  redis:
+     host: www.mayuyao.com
+     password: maxiaoguang
+     timeout: 10000
+     database: 0
+     lettuce:
+        pool:
+           max-active: 8
+           max-wait: -1
+           max-idle: 8
+           min-idle: 0
+     port: 6379
 
 management:
   info: # 打开info actuator/info请求访问权限

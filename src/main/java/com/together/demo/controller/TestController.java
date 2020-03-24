@@ -1,18 +1,21 @@
 package com.together.demo.controller;
 
+import com.together.demo.annotation.AutoIdempotent;
 import com.together.demo.annotation.EagleEye;
 import com.together.demo.designPattern.strategy.TaxProcess;
 import com.together.demo.designPattern.strategy.TaxProcessContext;
 import com.together.demo.exception.GlobalException;
 import com.together.demo.pojo.vo.Result;
 import com.together.demo.service.AccessLimitService;
+import com.together.demo.service.TokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
  *测试接口
- *  
+ *
+ * @author maxiaoguang
  */
 @Slf4j
 @RestController
@@ -93,5 +96,24 @@ public class TestController {
     public String test2(){
 
         return "OK";
+    }
+
+    @Autowired
+    private TokenService tokenService;
+
+    @RequestMapping(value = "/getToken",method = RequestMethod.GET)
+    public Result getToken(){
+        return Result.success(tokenService.createToken());
+    }
+
+    /**
+     * 使用幂等性注解
+     * @return
+     */
+    @AutoIdempotent
+    @RequestMapping(value = "/go",method = RequestMethod.POST)
+    public Result test1(){
+        log.info(" request ...");
+        return Result.success();
     }
 }
